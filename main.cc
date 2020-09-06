@@ -1,8 +1,8 @@
-#include "reader.hh"
-
 #include <fstream>
 #include <iostream>
 #include <sstream>
+
+#include "reader.hh"
 
 std::string read_file(const std::string path) {
   std::ifstream file(path);

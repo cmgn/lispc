@@ -37,10 +37,26 @@ std::ostream& operator<<(std::ostream& out, const Expression* expr) {
       out << ")";
       break;
     }
+    case ExpressionType::Builtin:
+      out << "BUILTIN[" << expr->builtin_name << "]";
+      break;
+    case ExpressionType::Closure:
+      out << "CLOSURE";
+      break;
     default:
       throw std::runtime_error("unknown expr type");
   }
   return out;
+}
+
+std::shared_ptr<Expression> Environment::lookup(const std::string& name) {
+  if (variables.count(name)) {
+    return variables[name];
+  }
+  if (parent) {
+    return parent->lookup(name);
+  }
+  throw std::runtime_error("variable " + name + " not found");
 }
 
 };  // namespace lispc
