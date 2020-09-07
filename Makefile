@@ -1,6 +1,6 @@
 CC := g++
 CPPFLAGS := -Wall -Werror -O3
-MODULES := expr.o reader.o
+MODULES := expr.o reader.o treewalk.o
 
 all: $(MODULES)
 	$(CC) $(CPPFLAGS) -o main $(MODULES) main.cc

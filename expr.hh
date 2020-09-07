@@ -1,7 +1,11 @@
+#ifndef _EXPR_HH
+#define _EXPR_HH
+
 #include <functional>
 #include <memory>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 namespace lispc {
 
@@ -37,6 +41,7 @@ struct Expression {
       builtin;
 
   // Closure fields.
+  std::vector<std::string> closure_parameters;
   std::shared_ptr<Expression> closure_expr;
   std::shared_ptr<Environment> closure_environment;
 
@@ -45,10 +50,12 @@ struct Expression {
 };
 
 struct Environment {
-  Environment* parent;
+  std::shared_ptr<Environment> parent;
   std::unordered_map<std::string, std::shared_ptr<Expression>> variables;
 
   std::shared_ptr<Expression> lookup(const std::string& name);
 };
 
 };  // namespace lispc
+
+#endif

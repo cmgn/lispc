@@ -73,8 +73,8 @@ std::shared_ptr<Expression> Reader::next() {
     curr->cdr = make_expr_of_type(ExpressionType::Null);
     return head->cdr;
   }
-  throw std::runtime_error("unexpected symbol " +
-                           std::string(1, source[source_pos]));
+  throw std::runtime_error("unexpected symbol [" +
+                           std::string(1, source[source_pos]) + "]");
 }
 
 bool Reader::done() {

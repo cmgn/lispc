@@ -1,3 +1,6 @@
+#ifndef _READER_HH
+#define _READER_HH
+
 #include <memory>
 #include <string>
 
@@ -21,3 +24,5 @@ class Reader {
 };
 
 };  // namespace lispc
+
+#endif
